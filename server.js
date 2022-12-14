@@ -11,17 +11,24 @@ const port = 3000;
     res.send('welcome to the git pub')
 })
 
-app.get("/drinks/", (req, res) => { //creates the drinks page 
-    res.render('drinks_index.ejs', { 
-    allDrinks: drinks[req.params.indexOfDrinksArray] // should give me access to alldrinks in the HTML now 
-    })
-})
 
 //controller 
 
-app.get('/drinks/:indexOfDrinksArrary', (res, req) => {
-  res.send(drinks[req.params.indexOfDrinksArray]);
-})
+
+app.get("/drinks/:indexOfDrinksArray", (req, res) => {
+  res.render("show.ejs", {
+    allDrinks: drinks[req.params.indexOfDrinksArray],
+  });
+});
+
+
+
+app.get("/drinks/", (req, res) => {
+  //creates the drinks page
+  res.render("drinks_index.ejs", {
+    allDrinks: drinks, // refers only to the data object 
+  });
+});
 
 // listener
 
