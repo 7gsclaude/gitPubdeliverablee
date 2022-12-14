@@ -2,6 +2,7 @@
 
 const express = require("express");
 const drinks = require("./models/drinks.js");
+const food = require('./models/food.js');
 const app = express();
 const port = 3000;
 
@@ -23,10 +24,12 @@ app.get("/drinks/:indexOfDrinksArray", (req, res) => {
 
 
 
+
 app.get("/drinks/", (req, res) => {
   //creates the drinks page
   res.render("drinks_index.ejs", {
     allDrinks: drinks, // refers only to the data object 
+    allFood:food,
   });
 });
 
